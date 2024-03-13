@@ -96,5 +96,29 @@ namespace MyWebFormApp.DAL
                 }
             }
         }
+        public void EditUserInRole(string username, int roleId)
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnectionString()))
+            {
+                string strSql = @"update UsersRoles set RoleID = @RoleID where Username = @Username";
+                var param = new { Username = username, RoleID = roleId };
+                try
+                {
+                    int result = conn.Execute(strSql, param);
+                    if (result != 1)
+                    {
+                        throw new Exception("Data tidak berhasil diubah");
+                    }
+                }
+                catch (SqlException sqlEx)
+                {
+                    throw new ArgumentException($"{sqlEx.InnerException.Message} - {sqlEx.Number}");
+                }
+                catch (Exception ex)
+                {
+                    throw new ArgumentException("Kesalahan: " + ex.Message);
+                }
+            }
+        }
     }
 }

@@ -43,6 +43,17 @@ namespace MyWebFormApp.BLL
                 throw new ArgumentException(ex.Message);
             }
         }
+        public void editUserInRole(string username, int roleId)
+        {
+            try
+            {
+                roleDAL.EditUserInRole(username, roleId);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
+        }
 
         public IEnumerable<RoleDTO> GetAllRoles()
         {

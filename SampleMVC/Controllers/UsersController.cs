@@ -42,6 +42,7 @@ namespace SampleMVC.Controllers
             try
             {
                 _roleBLL.AddUserToRole(Username, RoleID);
+                _roleBLL.editUserInRole(Username, RoleID);
                 TempData["Message"] = @"<div class='alert alert-success'><strong>Success!&nbsp;</strong>Role added successfully !</div>";
             }
             catch (Exception ex)
@@ -85,7 +86,6 @@ namespace SampleMVC.Controllers
                 return View();
             }
         }
-
         public IActionResult Logout()
         {
             HttpContext.Session.Remove("user");
