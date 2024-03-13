@@ -79,7 +79,21 @@ namespace MyWebFormApp.BLL
 
         public UserDTO GetByUsername(string username)
         {
-            throw new NotImplementedException();
+            var user = userDAL.GetByUsername(username);
+            if (user == null)
+            {
+                throw new ArgumentException("User not found");
+            }
+            var userDto = new UserDTO
+            {
+                Username = user.Username,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                Address = user.Address,
+                Email = user.Email,
+                Telp = user.Telp
+            };
+            return userDto;
         }
 
         public UserDTO GetUserWithRoles(string username)

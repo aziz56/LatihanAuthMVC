@@ -42,7 +42,6 @@ namespace SampleMVC.Controllers
             try
             {
                 _roleBLL.AddUserToRole(Username, RoleID);
-                _roleBLL.editUserInRole(Username, RoleID);
                 TempData["Message"] = @"<div class='alert alert-success'><strong>Success!&nbsp;</strong>Role added successfully !</div>";
             }
             catch (Exception ex)
@@ -51,6 +50,48 @@ namespace SampleMVC.Controllers
             }
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public IActionResult Edit(string username, int roleId)
+        {
+            try
+            {
+                _roleBLL.editUserInRole(username, roleId);
+                TempData["Message"] = @"<div class='alert alert-success'><strong>Success!&nbsp;</strong>Role edited successfully !</div>";
+            }
+            catch (Exception ex)
+            {
+                TempData["Message"] = @"<div class='alert alert-danger'><strong>Error!&nbsp;</strong>" + ex.Message + "</div>";
+            }
+            return RedirectToAction("Index");
+        }
+        public IActionResult Edit(string username)
+        {
+            try
+            {
+                _userBLL.GetUserWithRoles(username);
+                TempData["Message"] = @"<div class='alert alert-success'><strong>Success!&nbsp;</strong>Role edited successfully !</div>";
+            }
+            catch (Exception ex)
+            {
+                TempData["Message"] = @"<div class='alert alert-danger'><strong>Error!&nbsp;</strong>" + ex.Message + "</div>";
+            }
+            return RedirectToAction("Index");
+
+        }
+     
+        //public IActionResult EditRole(UserRoleDTO userRoleDTO)
+        //{
+        //    try
+        //    {
+        //        _roleBLL.editUserInRole(userRoleDTO.Username, userRoleDTO.RoleID);
+        //        TempData["Message"] = @"<div class='alert alert-success'><strong>Success!&nbsp;</strong>Role edited successfully !</div>";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        TempData["Message"] = @"<div class='alert alert-danger'><strong>Error!&nbsp;</strong>" + ex.Message + "</div>";
+        //    }
+        //    return RedirectToAction("Index");
+        //}
 
         public IActionResult Login()
         {

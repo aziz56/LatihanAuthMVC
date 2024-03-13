@@ -6,5 +6,6 @@ namespace MyWebFormApp.DAL.Interfaces
     {
         void AddUserToRole(string username, int roleId);
         void EditUserInRole(string username, int roleId);
+       
     }
 }
