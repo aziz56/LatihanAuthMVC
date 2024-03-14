@@ -1,4 +1,5 @@
-﻿<div class="row">
+﻿@model IEnumerable<MyWebFormApp.BLL.DTOs.RoleDTO >
+<div class="row">
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800">Edit</h1>
     </div>
@@ -7,18 +8,24 @@
         <!-- Basic Card Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Edit</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Edit Category</h6>
             </div>
             <div class="card-body">
                 @Html.Raw(ViewData["message"])
                 <form asp-action="Edit">
                     <div class="form-group">
-                        <label for="RoleID">Roles</label>
-                        <select name="RoleID" class="form-control"
-                                asp-items="@ViewBag.Roles">
-                            <option value="0">--Select Roles--</option>
-                        </select>
+                        <label for="ArticleID">ArticleID :</label>
+                        <input type="text" class="form-control" name="RoleID" readonly value="@Model.RoleID" />
                     </div>
+                    <div class="form-group">
+                        <label for="Title">Title:</label>
+                        <input type="text" class="form-control" name="RoleName" value="@Model.RoleName" />
+
+                    </div>
+
+
+    
+
                     <div class="form-group">
                         <input type="Submit" class="btn btn-success btn-sm" value="Edit" />
                     </div>

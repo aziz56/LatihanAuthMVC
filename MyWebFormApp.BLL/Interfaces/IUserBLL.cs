@@ -8,6 +8,7 @@ namespace MyWebFormApp.BLL.Interfaces
         void ChangePassword(string username, string newPassword);
         void Delete(string username);
         IEnumerable<UserDTO> GetAll();
+        UserDTO GetRoleByUsername(string username, int RoleId );
         UserDTO GetByUsername(string username);
         void Insert(UserCreateDTO entity);
         UserDTO Login(string username, string password);

@@ -7,8 +7,10 @@ namespace MyWebFormApp.DAL.Interfaces
     {
         IEnumerable<User> GetAllWithRoles();
         User GetUserWithRoles(string username);
-        User GetByUsername(string username);
+        User GetRoleByUsername(string username);
         User Login(string username, string password);
         void ChangePassword(string username, string newPassword);
+        User GetByUsername(string username);
+
     }
 }

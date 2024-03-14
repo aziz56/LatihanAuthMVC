@@ -64,18 +64,18 @@ namespace SampleMVC.Controllers
             }
             return RedirectToAction("Index");
         }
-        public IActionResult Edit(string username)
+        public IActionResult Edit(string id)
         {
             try
             {
-                _userBLL.GetUserWithRoles(username);
+                _userBLL.GetByUsername(id);
                 TempData["Message"] = @"<div class='alert alert-success'><strong>Success!&nbsp;</strong>Role edited successfully !</div>";
             }
             catch (Exception ex)
             {
                 TempData["Message"] = @"<div class='alert alert-danger'><strong>Error!&nbsp;</strong>" + ex.Message + "</div>";
             }
-            return RedirectToAction("Index");
+            return View();
 
         }
      

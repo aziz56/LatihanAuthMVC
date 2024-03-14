@@ -18,6 +18,7 @@ namespace MyWebFormApp.BLL.DTOs
         [Display(Name = "Phone")]
         public string Telp { get; set; }
 
+
         public IEnumerable<RoleDTO> Roles { get; set; }
     }
 }

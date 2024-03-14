@@ -104,6 +104,16 @@ namespace MyWebFormApp.DAL
             throw new System.NotImplementedException();
         }
 
+        public User GetRoleByUsername(string username)
+        {
+            using (SqlConnection conn = new SqlConnection(GetConnectionString()))
+            {
+                var strSql = @"SELECT *FROM UsersRoles WHERE Username = @username";
+                var param = new { Username = username };
+                var result = conn.QueryFirstOrDefault<User>(strSql, param);
+                return result;
+            }
+        }
         public User GetByUsername(string username)
         {
             using (SqlConnection conn = new SqlConnection(GetConnectionString()))
@@ -114,6 +124,7 @@ namespace MyWebFormApp.DAL
                 return result;
             }
         }
+       
 
         public IEnumerable<User> GetAllWithRoles()
         {

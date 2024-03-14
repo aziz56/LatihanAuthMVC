@@ -77,24 +77,29 @@ namespace MyWebFormApp.BLL
             return usersDTO;
         }
 
-        public UserDTO GetByUsername(string username)
+        public UserDTO GetRoleByUsername(string username, int RoleId )
         {
-            var user = userDAL.GetByUsername(username);
-            if (user == null)
-            {
-                throw new ArgumentException("User not found");
-            }
-            var userDto = new UserDTO
-            {
-                Username = user.Username,
-                FirstName = user.FirstName,
-                LastName = user.LastName,
-                Address = user.Address,
-                Email = user.Email,
-                Telp = user.Telp
-            };
-            return userDto;
+            throw new NotImplementedException();
         }
+
+        //public Userdto Getbyusername(string username)
+        //{
+        //    var user = userdal.getbyusername(username);
+        //    if (user == null)
+        //    {
+        //        throw new argumentexception("user not found");
+        //    }
+        //    var userdto = new userdto
+        //    {
+        //        username = user.username,
+        //        firstname = user.firstname,
+        //        lastname = user.lastname,
+        //        address = user.address,
+        //        email = user.email,
+        //        telp = user.telp
+        //    };
+        //    return userdto;
+        //}
 
         public UserDTO GetUserWithRoles(string username)
         {
@@ -283,6 +288,27 @@ namespace MyWebFormApp.BLL
             {
                 throw new ArgumentException(ex.Message);
             }
+        }
+
+        UserDTO IUserBLL.GetByUsername(string username)
+        {
+            var user = userDAL.GetByUsername(username);
+            var userDTO = new UserDTO();
+            {
+         
+                if (user == null)
+                {
+                    throw new ArgumentException("User not found");
+                }
+                userDTO.Username = user.Username;
+                userDTO.FirstName = user.FirstName;
+                userDTO.LastName = user.LastName;
+                userDTO.Address = user.Address;
+                userDTO.Email = user.Email;
+                userDTO.Telp = user.Telp;
+                return userDTO;
+            }
+            
         }
     }
 }
